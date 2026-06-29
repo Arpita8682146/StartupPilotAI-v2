@@ -46,50 +46,88 @@ StartupPilotAI simplifies this process by allowing users to upload documents and
 ## Architecture
 
 ```text
-User
-   │
-   ▼
-Upload PDF
-   │
-   ▼
-Text Extraction
-   │
-   ▼
-Chunking
-   │
-   ▼
-Embeddings
-   │
-   ▼
-ChromaDB
-   │
-   ▼
-Retriever
-   │
-   ▼
-Google Gemini
-   │
-   ▼
-AI Response
+                    User
+                      │
+                      ▼
+         Streamlit Interface
+    Upload • Search • Ask • Analyze
+                      │
+                      ▼
+            StartupPilotAI Engine
+                      │
+      ┌───────────────┴──────────────┐
+      │                              │
+      ▼                              ▼
+
+Document Processing          Query Processing
+
+PDF Upload                   User Query
+     │                           │
+     ▼                           ▼
+
+PyMuPDF                 Semantic Search
+     │                           │
+     ▼                           ▼
+
+Chunking                ChromaDB Retrieval
+     │                           │
+     ▼                           ▼
+
+Embeddings             Relevant Context
+     │                           │
+     └──────────────┬────────────┘
+                    ▼
+
+              Prompt Builder
+                    │
+                    ▼
+
+              Google Gemini
+                    │
+                    ▼
+
+        AI Startup Recommendations
+
+      Funding • Legal • Compliance
+      Registration • Roadmaps
+      Personalized Guidance
 ```
 
----
-
-## Project Structure
-
-```text
-StartupPilotAI
+StartupPilotAI/
 │
-├── assets
-├── data
-├── docs
-├── src
-├── tests
 ├── app.py
 ├── requirements.txt
 ├── README.md
-└── .gitignore
-```
+├── LICENSE
+├── .gitignore
+│
+├── docs/
+│   └── rag_architecture.md
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── embeddings/
+│
+├── src/
+│   ├── pdf_loader.py
+│   ├── chunking.py
+│   ├── embeddings.py
+│   ├── vector_store.py
+│   ├── retrieval.py
+│   └── gemini_client.py
+│
+├── assets/
+│   ├── logo.png
+│   └── screenshots/
+│
+├── tests/
+│   └── test_rag.py
+│
+├── uploads/
+│   └── sample_pdfs/
+│
+└── venv/
 
 ---
 
