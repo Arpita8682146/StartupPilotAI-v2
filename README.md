@@ -132,4 +132,21 @@ StartupPilotAI/
 │   └── sample_pdfs/
 │
 └── venv/
+
 ```
+
+Day 1
+Repository Setup
+
+Day 2
+Streamlit Setup
+ChromaDB
+
+Day 3
+PDF Pipeline
+PyMuPDF
+
+Day 4
+Chunking
+Text Segmentation
+RAG Preparation
