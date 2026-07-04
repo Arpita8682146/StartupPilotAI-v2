@@ -135,11 +135,12 @@ StartupPilotAI/
 
 ```
 Week 1:
-Day 1: PDF ingestion using PyMuPDF.
-Day 2: Document chunking for efficient retrieval.
-Day 3: Embedding generation with Sentence Transformers.
-Day 4: Vector storage implementation using ChromaDB.
-Day 5: Semantic similarity search pipeline.
-Day 6: Query-based context retrieval module.
-Day 7: Prompt construction for RAG-based responses.n
-RAG Preparation
+## Internship Progress
+
+- Day 1: Implemented PDF loading pipeline using PyMuPDF.
+- Day 2: Built a document chunking module for semantic splitting.
+- Day 3: Generated embeddings using Sentence Transformers.
+- Day 4: Integrated ChromaDB for vector storage.
+- Day 5: Implemented semantic similarity search.
+- Day 6: Developed context retrieval functionality.
+- Day 7: Created a prompt builder for RAG prompts.
