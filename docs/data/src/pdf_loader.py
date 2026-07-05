@@ -1,13 +1,18 @@
 import fitz
 
-def extract_text(pdf_path):
 
-    document = fitz.open(pdf_path)
+def load_pdf(uploaded_file):
 
-    text=""
+    pdf = fitz.open(
+        stream=uploaded_file.read(),
+        filetype="pdf"
+    )
 
-    for page in document:
+    text = ""
 
+    for page in pdf:
         text += page.get_text()
+
+    pdf.close()
 
     return text

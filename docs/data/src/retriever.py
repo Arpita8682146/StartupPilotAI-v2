@@ -1,32 +1,15 @@
-from embeddings import generate_embeddings
+from embeddings import embed_chunks
 from vectorstore import search
 
 
-def retrieve_context(question):
+def retrieve_context(query):
 
-    print("Question:", question)
+    query_embedding = embed_chunks([query])[0]
 
-    query_embedding = generate_embeddings(
-        [question]
-    )[0]
+    results = search(query_embedding)
 
-    print("Embedding generated")
+    documents = results["documents"][0]
 
-    print("Searching database...")
-
-    results = search(
-        query_embedding
-    )
-
-    print("Search completed")
-
-    print(results)
-
-    docs = results["documents"][0]
-
-    context = "\n".join(
-        docs
-    )
-    
+    context = "\n".join(documents)
 
     return context

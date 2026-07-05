@@ -1,9 +1,13 @@
+import os
 import chromadb
 
+# Resolve path to the root chroma_db folder dynamically
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_db_path = os.path.abspath(os.path.join(current_dir, "..", "..", "..", "chroma_db"))
 
 # Persistent database
 client = chromadb.PersistentClient(
-    path="./chroma_db"
+    path=root_db_path
 )
 
 collection = client.get_or_create_collection(
@@ -12,6 +16,12 @@ collection = client.get_or_create_collection(
 
 
 def store_embeddings(chunks, embeddings):
+
+    if len(chunks) == 0:
+        raise Exception("No chunks available")
+
+    if len(embeddings) == 0:
+        raise Exception("No embeddings generated")
 
     ids = [str(i) for i in range(len(chunks))]
 

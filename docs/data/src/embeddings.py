@@ -1,29 +1,15 @@
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer(
-    'all-MiniLM-L6-v2'
+    "all-MiniLM-L6-v2"
 )
 
 
-def generate_embeddings(chunks):
+def embed_chunks(chunks):
 
     embeddings = model.encode(
-        chunks
+        chunks,
+        convert_to_tensor=False
     )
 
     return embeddings
-
-
-sample_chunks = [
-
-"Startup India supports innovation.",
-
-"Funding schemes help entrepreneurs."
-
-]
-
-vectors = generate_embeddings(
-    sample_chunks
-)
-
-print(vectors.shape)
