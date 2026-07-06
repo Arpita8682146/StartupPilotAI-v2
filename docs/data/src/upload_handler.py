@@ -1,43 +1,12 @@
-from pdf_loader import load_pdf
-from chunking import split_text
-from embeddings import embed_chunks
-from vectorstore import store_embeddings
+import fitz
 
+def process_pdf(pdf_file):
+    text = ""
 
-def process_pdf(uploaded_file):
+    doc = fitz.open(stream=pdf_file.read(),
+                    filetype="pdf")
 
-    text = load_pdf(uploaded_file)
+    for page in doc:
+        text += page.get_text()
 
-    print("TEXT LENGTH:", len(text))
-
-    if len(text.strip()) == 0:
-        raise Exception(
-            "No text extracted from PDF"
-        )
-
-    chunks = split_text(text)
-
-    print("CHUNKS:", len(chunks))
-
-    if len(chunks) == 0:
-        raise Exception(
-            "No chunks created"
-        )
-
-    embeddings = embed_chunks(chunks)
-
-    print("EMBEDDINGS:", len(embeddings))
-
-    if len(embeddings) == 0:
-        raise Exception(
-            "Embeddings are empty"
-        )
-
-    store_embeddings(
-        chunks,
-        embeddings
-    )
-
-    print("PDF processed successfully")
-
-    return True
+    return text
