@@ -1,16 +1,20 @@
 import os
 import re
 import chromadb
+
 # Resolve path to the root chroma_db folder dynamically
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_db_path = os.path.abspath(os.path.join(current_dir, "..", "chroma_db"))
+
 # Persistent database client
 client = chromadb.PersistentClient(
     path=root_db_path
 )
+
 collection = client.get_or_create_collection(
     name="startup_docs"
 )
+
 def store_embeddings(chunks, embeddings):
     """
     Stores text chunks and their embeddings into ChromaDB with unique IDs.
@@ -20,11 +24,14 @@ def store_embeddings(chunks, embeddings):
     """
     if len(chunks) == 0:
         raise Exception("No chunks available to store.")
+
     if len(embeddings) == 0:
         raise Exception("No embeddings generated.")
+
     ids = []
     documents = []
     metadatas = []
+
     for idx, chunk in enumerate(chunks):
         source = chunk["source"]
         page = chunk["page"]
@@ -41,11 +48,13 @@ def store_embeddings(chunks, embeddings):
             "page": page,
             "chunk_idx": c_idx
         })
+
     # Convert embeddings to list of lists if it's a numpy array
     if hasattr(embeddings, "tolist"):
         embeddings_list = embeddings.tolist()
     else:
         embeddings_list = list(embeddings)
+
     collection.add(
         documents=documents,
         embeddings=embeddings_list,
@@ -54,6 +63,7 @@ def store_embeddings(chunks, embeddings):
     )
     
     print(f"Stored {len(chunks)} chunks in vector database.")
+
 def search(query_embedding, n_results=4):
     """
     Queries ChromaDB with a query embedding.
@@ -67,10 +77,12 @@ def search(query_embedding, n_results=4):
         query_embedding_list = query_embedding.tolist()
     else:
         query_embedding_list = list(query_embedding)
+
     results = collection.query(
         query_embeddings=[query_embedding_list],
         n_results=min(n_results, collection.count())
     )
+
     formatted_results = []
     
     # Process results into flat list of dictionaries
@@ -89,6 +101,7 @@ def search(query_embedding, n_results=4):
             })
             
     return formatted_results
+
 def get_stats():
     """
     Returns database statistics such as total chunks and unique documents.
@@ -120,6 +133,7 @@ def get_stats():
         "filenames": list(filenames),
         "file_counts": file_counts
     }
+
 def clear_db():
     """
     Deletes the current collection and recreates it to clear the database.

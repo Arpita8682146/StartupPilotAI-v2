@@ -1,5 +1,6 @@
 from embeddings import embed_chunks
 from vectorstore import search
+
 def retrieve_context_with_citations(query, n_results=4):
     """
     Retrieves relevant text chunks matching the query along with metadata.
@@ -48,6 +49,7 @@ def retrieve_context_with_citations(query, n_results=4):
         
     context_string = "\n\n".join(context_parts)
     return context_string, citations
+
 def retrieve_context(query):
     """
     Backward-compatible single-return context retrieval.
