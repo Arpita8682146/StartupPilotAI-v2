@@ -187,46 +187,8 @@ Create a `.env` file in the project root and add your Gemini API key:
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-### Run the app
 
-```bash
-streamlit run docs/data/src/app.py
-```
 
-The app will be available at `http://localhost:8501`.
-
----
-
-## 🚀 Usage
-
-1. Launch the app with `streamlit run docs/data/src/app.py` (or visit the [live app](https://startuppilotai.streamlit.app)).
-2. Upload one or more startup-related PDF documents from the sidebar.
-3. Wait for the document to be processed, chunked, and embedded.
-4. Ask questions in natural language, e.g.:
-   - "What funding schemes am I eligible for?"
-   - "Summarize the compliance requirements in this document."
-   - "Explain clause 4.2 in simple terms."
-5. Review AI-generated summaries, readiness scores, funding matches, and roadmap suggestions across the three tabs.
-
----
-
-## 🌐 Deployment
-
-The app is live on **Streamlit Community Cloud**: [startuppilotai.streamlit.app](https://startuppilotai.streamlit.app)
-
-It is also containerized with Docker for portable deployment elsewhere:
-
-```bash
-# Build the image
-docker build -t startuppilotai .
-
-# Run locally
-docker run -p 8501:8501 --env-file .env startuppilotai
-```
-
-The image can also be pushed to a container registry (e.g. Docker Hub) and deployed to any platform that accepts a container, such as Render, Koyeb, or Google Cloud Run. The app originally relied on a local `sentence-transformers` model for embeddings, which pushed memory usage past the 512MB limit on several free-tier hosts. Switching to the Gemini Embedding API removed that local model dependency entirely and significantly reduced the app's runtime memory footprint.
-
----
 
 ## 🗺️ Roadmap
 
@@ -242,27 +204,19 @@ The image can also be pushed to a container registry (e.g. Docker Hub) and deplo
 
 ### Week 1
 
-| Day | Progress |
-|---|---|
-| Day 1 | Implemented PDF loading pipeline using PyMuPDF |
-| Day 2 | Built a document chunking module for semantic splitting |
-| Day 3 | Generated embeddings using Sentence Transformers |
-| Day 4 | Integrated ChromaDB for vector storage |
-| Day 5 | Implemented semantic similarity search |
-| Day 6 | Developed context retrieval functionality |
-| Day 7 | Created a prompt builder for RAG prompts |
+
+ Implemented PDF loading pipeline using PyMuPDF |
+ Built a document chunking module for semantic splitting |
+ Generated embeddings using Sentence Transformers |
+ Integrated ChromaDB for vector storage |
+Implemented semantic similarity search |
+ Developed context retrieval functionality |
+ Created a prompt builder for RAG prompts |
 
 ### Week 2
+ Fixed a circular import between `gemini_client.py` and `retriever.py`; removed a hardcoded API key in favor of environment-variable configuration |
+ Cleaned up duplicate `app.py` copies and stray `__pycache__` files; resolved git merge/rebase conflicts and consolidated the project into a single source tree |
 
-| Day | Progress |
-|---|---|
-| Day 8 | Fixed a circular import between `gemini_client.py` and `retriever.py`; removed a hardcoded API key in favor of environment-variable configuration |
-| Day 9 | Cleaned up duplicate `app.py` copies and stray `__pycache__` files; resolved git merge/rebase conflicts and consolidated the project into a single source tree |
-| Day 10 | Set up Docker: wrote a `Dockerfile` and `.dockerignore`, and containerized the Streamlit app |
-| Day 11 | Built and pushed the Docker image to Docker Hub for portable deployment |
-| Day 12 | Deployed to Render; diagnosed and resolved a reverse-proxy connection issue behind the platform's load balancer |
-| Day 13 | Diagnosed an out-of-memory crash on free-tier hosting (512MB RAM limit) caused by the local `sentence-transformers`/`torch` stack; migrated embedding generation to the Gemini Embedding API to cut the app's memory footprint |
-| Day 14 | Evaluated deployment alternatives (Koyeb, Google Cloud Run, Streamlit Community Cloud, Snowflake); deployed successfully to **Streamlit Community Cloud**, now live at [startuppilotai.streamlit.app](https://startuppilotai.streamlit.app) |
 
 *Week 3 log to be added.*
 
