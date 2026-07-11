@@ -6,7 +6,7 @@ StartupPilotAI is an AI-powered platform that helps entrepreneurs understand sta
 
 Upload startup guides, legal agreements, funding schemes, and business documents — then ask questions in natural language and get accurate, context-aware answers grounded in your own documents.
 
-🔗 **Live app:** [startuppilotai.streamlit.app](https://startuppilotai.streamlit.app)
+
 
 ---
 
@@ -56,10 +56,6 @@ StartupPilotAI solves this by letting users upload documents and receive intelli
 ---
 
 ## 🖼️ Demo
-
-🔗 Try it live: **[startuppilotai.streamlit.app](https://startuppilotai.streamlit.app)**
-
-*Screenshots coming soon — `assets/screenshots/`*
 
 ---
 
