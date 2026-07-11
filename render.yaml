@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: startuppilotai
+    runtime: docker
+    plan: free
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
