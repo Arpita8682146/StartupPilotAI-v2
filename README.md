@@ -198,20 +198,28 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ## 📅 Development Log
 
-### Week 1
+## 📅 Week 1 — Foundation & Document Ingestion
 
+- Set up project structure and Python environment (venv, `requirements.txt`).
+- Implemented `pdf_loader.py` using PyMuPDF to extract text from uploaded PDFs.
+- Built `chunking.py` to split extracted text into overlapping chunks for better context retention.
+- Created initial Streamlit UI (`app.py`) for file upload and basic layout.
+- Set up Git repository and initial commit structure.
 
- Implemented PDF loading pipeline using PyMuPDF |
- Built a document chunking module for semantic splitting |
- Generated embeddings using Sentence Transformers |
- Integrated ChromaDB for vector storage |
-Implemented semantic similarity search |
- Developed context retrieval functionality |
- Created a prompt builder for RAG prompts |
+**Outcome:** Working PDF upload and text extraction pipeline with a basic UI shell.
 
-### Week 2
- Fixed a circular import between `gemini_client.py` and `retriever.py`; removed a hardcoded API key in favor of environment-variable configuration |
- Cleaned up duplicate `app.py` copies and stray `__pycache__` files; resolved git merge/rebase conflicts and consolidated the project into a single source tree |
+## 📅 Week 2 — RAG Pipeline & AI Integration
+
+- Built `embeddings.py` to generate vector embeddings from text chunks using Gemini.
+- Set up `vectorstore.py` with ChromaDB for storing and querying embeddings.
+- Implemented `retriever.py` for top-k similarity search on user queries.
+- Built `prompt_builder.py` to construct grounded prompts from retrieved context.
+- Integrated `gemini_client.py` to connect with the Gemini API for response generation.
+- Added `advisor.py` to reframe LLM output into founder-friendly advice.
+- Connected all components into `rag_pipeline.py` for end-to-end query handling.
+
+**Outcome:** Fully functional local RAG pipeline — upload a document, ask a question, get a grounded answer.
+
 
 ## 📅 Week 3 — Deployment & Testing
 
