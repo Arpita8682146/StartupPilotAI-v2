@@ -213,9 +213,16 @@ Implemented semantic similarity search |
  Fixed a circular import between `gemini_client.py` and `retriever.py`; removed a hardcoded API key in favor of environment-variable configuration |
  Cleaned up duplicate `app.py` copies and stray `__pycache__` files; resolved git merge/rebase conflicts and consolidated the project into a single source tree |
 
+## 📅 Week 3 — Deployment & Testing
 
-*Week 3 log to be added.*
+- Wrote `Dockerfile` to containerize the app (Streamlit, ChromaDB, PyMuPDF, Gemini SDK).
+- Configured `.streamlit/config.toml` and moved API keys to environment variables via `python-dotenv`.
+- Deployed to Streamlit Community Cloud with auto-deploy from GitHub `main`.
+- Added unit tests for PDF loading, chunking, retrieval, prompt building, and vector store.
+- Fixed PDF parsing edge cases and chunk-overlap bugs affecting retrieval accuracy.
+- Finalized `requirements.txt` with pinned dependency versions.
 
+**Outcome:** App live on a public URL, containerized, with core RAG pipeline test coverage.
 ---
 
 ## 🤝 Contributing
