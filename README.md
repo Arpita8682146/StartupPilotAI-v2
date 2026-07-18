@@ -231,6 +231,18 @@ GEMINI_API_KEY=your_gemini_api_key_here
 - Finalized `requirements.txt` with pinned dependency versions.
 
 **Outcome:** App live on a public URL, containerized, with core RAG pipeline test coverage.
+
+## 📅 Week 4 — Polish, Documentation & Final Review
+
+- Refined Streamlit UI: improved layout, page config, and sidebar UX.
+- Revised and expanded `README.md` for clarity and visual appeal.
+- Reviewed and cleaned up code across all modules for consistency.
+- Removed unused files and dependencies to streamline the project.
+- Conducted end-to-end manual testing across multiple document types (pitch decks, term sheets, reports).
+- Verified deployment stability and fixed minor UI/UX bugs on the live app.
+- Added MIT License and finalized project documentation.
+
+**Outcome:** Production-ready, publicly deployed StartupPilotAI with polished UI, clean codebase, and complete documentation.
 ---
 
 ## 🤝 Contributing
