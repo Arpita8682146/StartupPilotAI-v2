@@ -243,7 +243,34 @@ GEMINI_API_KEY=your_gemini_api_key_here
 - Added MIT License and finalized project documentation.
 
 **Outcome:** Production-ready, publicly deployed StartupPilotAI with polished UI, clean codebase, and complete documentation.
----
+
+## 🚀 How to Use StartupPilotAI
+
+### 1. Add & Use Your API Key to Access
+
+### 2. Upload Documents
+- Go to the **Knowledge Base** sidebar → click **+** to upload startup-related PDFs (pitch decks, term sheets, market research, funding agreements).
+- Uploaded files are automatically parsed, chunked, and indexed into the vector database.
+- View **Total Documents Indexed** and **Total Chunks in DB** at the bottom of the sidebar to confirm successful indexing.
+
+### 3. 💬 RAG Chat Assistant
+- Ask any question in natural language about your uploaded documents.
+- The assistant retrieves relevant context from the indexed PDFs and generates a grounded, accurate answer — no hallucinated information beyond what's in your documents.
+- Example: *"What is the funding ask and valuation in the term sheet?"*
+
+### 4. 🎯 Startup Advisor Suite
+- Switch to the **Startup Advisor** tab for structured, generated recommendations instead of open Q&A.
+- Select an **Advisor Utility** (e.g., Funding Scheme Recommendation).
+- Fill in your **Operational Stage** (e.g., Ideation/Pre-Seed), **Industry Vertical** (e.g., FinTech, AgriTech), and **Funding Target Amount**.
+- Click **Fetch Funding Advisory** to get tailored funding recommendations based on your profile and indexed documents.
+
+### 5. 📊 Analytics Dashboard
+- View system-level insights: number of documents indexed, chunk distribution, and knowledge base statistics.
+- Useful for verifying how much of each document was processed and understanding retrieval behavior.
+
+### 6. Manage Documents
+- Use the ❌ icon next to any file in the sidebar to remove it from the knowledge base at any time.
+- Use **Show Indexed Files** to view exactly which documents are currently searchable.
 
 ## 🤝 Contributing
 
